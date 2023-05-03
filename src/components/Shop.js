@@ -2,12 +2,12 @@ import { React } from 'react';
 const { map } = require('@laufire/utils/collection');
 
 const Shop = (context) => {
-	const { config: { shopDetails }, data } = context;
+	const { config: { shopHeader }, data } = context;
 
 	return (
 		<table>
 			<thead>
-				<tr>{map(shopDetails, (shop, i) =>
+				<tr>{map(shopHeader, (shop, i) =>
 					<th key={ i }>{shop}</th>)}
 				</tr>
 			</thead>
