@@ -1,4 +1,5 @@
 import shopData from './shopData';
+const { pick } = require('@laufire/utils/collection');
 
 const getItemPrice = (shopItems, name) => {
 	const item = shopItems.find((items) => items.name === name);
@@ -20,12 +21,13 @@ const getItemNames = (data) => [...new Set(data.map((shop) =>
 
 const renderData = (context) => {
 	const { data } = context;
+	const shopNames = pick(data, 'shopName');
 	const items = getItemNames(data).map((name) => ({
 		name: name,
 		shopPrices: getShopPrices(name, data),
 	}));
 
-	return items ;
+	return { shopNames, items };
 };
 
 const shopServices = (context) =>
